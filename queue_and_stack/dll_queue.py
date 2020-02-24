@@ -21,4 +21,7 @@ class Queue:
             return None
 
     def len(self):
-        self.size
+        if self == None:
+            return self.size == 0
+        else:
+            return self.size
