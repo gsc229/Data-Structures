@@ -10,17 +10,18 @@ class ListNode:
 
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
-    have a next node it is point to."""
+    have a next node it is pointing to."""
 
     def insert_after(self, value):
-        current_next = self.next
+        # self is the original tail of dll
+        current_next = self.next  # None
         self.next = ListNode(value, self, current_next)
         if current_next:
             current_next.prev = self.next
 
     """Wrap the given value in a ListNode and insert it
     before this node. Note that this node could already
-    have a previous node it is point to."""
+    have a previous node it is pointing to."""
 
     def insert_before(self, value):
         current_prev = self.prev
@@ -89,9 +90,12 @@ class DoublyLinkedList:
         self.length += 1
         if not self.head and not self.tail:
             self.head = self.tail = ListNode(value)
+            return self.tail
         else:
+            # self.tail is an instance of ListNode
             self.tail.insert_after(value)
             self.tail = self.tail.next
+            return self.tail
 
     """Removes the List's current tail node, making the
     current tail's previous node the new tail of the List.
@@ -144,6 +148,7 @@ class DoublyLinkedList:
 
     def get_max(self):
         current_node = self.head
+        print("SELF.HEAD: ", self.head.value)
         current_max = self.head.value
         if self.head != self.tail:
             while current_node != self.tail:
@@ -155,6 +160,21 @@ class DoublyLinkedList:
         else:
             return self.head.value
 
+
         # Max var
         # Loop through heads via node
         #
+""" 
+
+   def find_max(node):
+            
+            if node == None:
+                return current_max
+            elif node.next == None:
+                return current_max
+            elif node.next.value > current_max:
+                print("NODE.NEXT.VALUE: ", node.next.value)
+                current_max = node.next.value
+                return find_max(node.next)
+        find_max(self.head)
+ """
