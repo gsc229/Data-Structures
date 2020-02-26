@@ -63,3 +63,4 @@ class LRUCache:
         self.order.add_to_tail((key, value))
         self.storage[key] = self.order.tail
         self.size += 1
+        print(f"self.storage: {self.storage}")
