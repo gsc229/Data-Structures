@@ -16,7 +16,10 @@ print(f"order: {cache.order}")
 print("===========================")
 
 DllA = Dll()
-
+print(DllA.head)
 DllA.add_to_head("HEAD")
-
-print(f"{DllA.head.value}")
+DllA.add_to_head("NEW HEAD")
+DllA.head.next.value = "OLD HEAD"
+DllA.add_to_tail("TAIL")
+DllA.add_to_tail("NEW TAIL")
+print(f"\nhead.value: {DllA.head.value}\nhead.next.value: {DllA.head.next.value}\ntail.value: {DllA.tail.value}\nhead.next.next.next.value: {DllA.head.next.next.next.value}\nDllA length: {DllA.length}\nremoved head: {DllA.remove_from_head()}\nhead after remove: {DllA.head.value}\nremoved tail: {DllA.remove_from_tail()}\ntail after remove: {DllA.tail.value}")
